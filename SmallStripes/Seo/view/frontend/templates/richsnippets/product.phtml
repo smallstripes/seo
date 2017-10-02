@@ -3,16 +3,14 @@
   "@context": "http://schema.org/",
   "@type": "Product",
   "name": "<?php echo $this->getProductName(); ?>",
-  "image": [
-    "https://example.com/photos/1x1/photo.jpg",
-    "https://example.com/photos/4x3/photo.jpg",
-    "https://example.com/photos/16x9/photo.jpg"
-   ],
-  "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
-  "mpn": "925872",
+  <?php if ($this->haveImages()): ?>
+  "image": [<?php echo implode(",", $this->getImages()) ?>],
+   <?php endif; ?>
+  "description": "<?php echo $this->getDescription(); ?>",
+  "sku": "<?php echo $this->getSku(); ?>",
   "brand": {
     "@type": "Thing",
-    "name": "ACME"
+    "name": "<?php echo $this->getBrandName(); ?>"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -21,15 +19,24 @@
   },
   "offers": {
     "@type": "Offer",
-    "priceCurrency": "USD",
-    "price": "119.99",
-    "priceValidUntil": "2020-11-05",
-    "itemCondition": "http://schema.org/UsedCondition",
-    "availability": "http://schema.org/InStock",
+    "priceCurrency": "<?php echo $this->getPriceCurrency(); ?>",
+    "price": "<?php echo $this->getPrice(); ?>",
+    "priceValidUntil": "<?php echo $this->getPriceValidUntil(); ?>",
+    "itemCondition": "<?php echo $this->getItemCondition(); ?>",
+    "availability": "<?php echo $this->getAvailability(); ?>",
+
     "seller": {
       "@type": "Organization",
       "name": "Executive Objects"
     }
   }
 }
+
+
+
+
+
+
+
+
 </script>

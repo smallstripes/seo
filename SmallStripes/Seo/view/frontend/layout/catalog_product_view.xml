@@ -6,5 +6,10 @@
         <referenceContainer name="content">
             <block class="SmallStripes\Seo\Block\RichSnippets\Product" name="smallstripes.seo.richsnippets.product" template="richsnippets/product.phtml" />
         </referenceContainer>
+        <referenceBlock name="product.price.final">
+            <arguments>
+                <argument name="zone" xsi:type="boolean">false</argument>
+            </arguments>
+        </referenceBlock>
     </body>
 </page>
