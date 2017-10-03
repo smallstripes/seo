@@ -10,16 +10,14 @@ use Magento\CatalogInventory\Model\Stock\StockItemRepository;
 class Product extends Template
 {
     protected $registry;
-    protected $_stockItemRepository;
+    protected $reviewCount;
 
     public function __construct(
         Context $context,
         Registry $registry,
-        StockItemRepository $stockItemRepository,
         array $data = []
     ) {
         $this->registry = $registry;
-        $this->_stockItemRepository = $stockItemRepository;
         parent::__construct($context, $data);
     }
 
@@ -55,9 +53,7 @@ class Product extends Template
 
     public function getAvailability()
     {
-        $productId = (int)$this->getProduct()->getId();
-        $_productStock = $this->_stockItemRepository->get($productId);
-        if ($_productStock->getIsInStock()) {
+        if ($this->getProduct()->isAvailable()) {
             return 'http://schema.org/InStock';
         }
         return 'http://schema.org/OutOfStock';
@@ -95,5 +91,26 @@ class Product extends Template
             $images[] = '"' . $image->getData('large_image_url') . '"';
         }
         return $images;
+    }
+
+    public function haveReviews()
+    {
+        if ($this->getReviewCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getReviewCount()
+    {
+        if (!$this->reviewCount) {
+            $this->reviewCount = $this->getProduct()->getRatingSummary()->getReviewsCount();
+        }
+        return $this->reviewCount;
+    }
+
+    public function getRatingSummary()
+    {
+        return $this->getProduct()->getRatingSummary()->getRatingSummary();
     }
 }

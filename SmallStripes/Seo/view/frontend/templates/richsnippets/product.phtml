@@ -12,31 +12,21 @@
     "@type": "Thing",
     "name": "<?php echo $this->getBrandName(); ?>"
   },
+   <?php if ($this->haveReviews()): ?>
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.4",
-    "reviewCount": "89"
+    "bestRating": "100",
+    "ratingValue": "<?php echo $this->getRatingSummary(); ?>",
+    "reviewCount": "<?php echo $this->getReviewCount(); ?>"
   },
+   <?php endif; ?>
   "offers": {
     "@type": "Offer",
     "priceCurrency": "<?php echo $this->getPriceCurrency(); ?>",
     "price": "<?php echo $this->getPrice(); ?>",
     "priceValidUntil": "<?php echo $this->getPriceValidUntil(); ?>",
     "itemCondition": "<?php echo $this->getItemCondition(); ?>",
-    "availability": "<?php echo $this->getAvailability(); ?>",
-
-    "seller": {
-      "@type": "Organization",
-      "name": "Executive Objects"
-    }
+    "availability": "<?php echo $this->getAvailability(); ?>"
   }
 }
-
-
-
-
-
-
-
-
 </script>

@@ -6,6 +6,16 @@
         <referenceContainer name="content">
             <block class="SmallStripes\Seo\Block\RichSnippets\Product" name="smallstripes.seo.richsnippets.product" template="richsnippets/product.phtml" />
         </referenceContainer>
+        <referenceBlock name="product.info.review" >
+            <arguments>
+                <argument name="template" xsi:type="string">SmallStripes_Seo::review/helper/summary.phtml</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name='copyright'>
+            <action method='setTemplate'>
+                <argument name='template' xsi:type='string'>Dfr_Backend::page/copyright.phtml</argument>
+            </action>
+        </referenceBlock>
         <referenceBlock name="product.price.final">
             <arguments>
                 <argument name="zone" xsi:type="boolean">false</argument>
