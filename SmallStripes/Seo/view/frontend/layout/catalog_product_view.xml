@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <attribute name="itemtype" remove="true" ifconfig="smallstripes_seo/general/enabled"/>
         <attribute name="itemscope" remove="true" ifconfig="smallstripes_seo/general/enabled"/>
         <referenceContainer name="content">
-            <block class="SmallStripes\Seo\Block\RichSnippets\Product" name="smallstripes.seo.richsnippets.product" template="richsnippets/product.phtml" />
+            <block class="SmallStripes\Seo\Block\RichSnippets\Product" name="smallstripes.seo.richsnippets.product"
+                   template="richsnippets/product.phtml"/>
         </referenceContainer>
-        <referenceBlock name="product.info.review" >
+        <referenceBlock name="product.info.review">
             <arguments>
                 <argument name="template" xsi:type="string">SmallStripes_Seo::review/helper/summary.phtml</argument>
             </arguments>
@@ -20,6 +22,11 @@
             <arguments>
                 <argument name="zone" xsi:type="boolean">false</argument>
             </arguments>
+        </referenceBlock>
+        <referenceBlock name="opengraph.general" remove="true"/>
+        <referenceBlock name="head.additional">
+            <block class="SmallStripes\Seo\Block\OpenGraph\Product" name="smallstripes.seo.opengraph.product"
+                   template="SmallStripes_Seo::opengraph/product.phtml"/>
         </referenceBlock>
     </body>
 </page>

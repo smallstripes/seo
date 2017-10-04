@@ -1,0 +1,11 @@
+<meta property="og:type" content="product"/>
+<meta property="og:title" content="<?php echo $this->escapeHtml($this->getTitle()); ?>"/>
+<meta property="og:image" content="<?php echo $this->escapeUrl($this->getImage()); ?>"/>
+<meta property="og:url" content="<?php echo $this->escapeUrl($this->getProductUrl()); ?>"/>
+<meta property="og:description" content="<?php echo $this->escapeHtml($this->getDescription()) ?>"/>
+<meta property="product:retailer_item_id" content="<?php echo $this->getRetailerItemId() ?>"/>
+<meta property="og:site_name" content="<?php echo $block->getSiteName(); ?>"/>
+<?php if ($this->showPrice()): ?>
+    <meta property="product:price:amount" content="<?php echo $this->getPriceAmount(); ?>"/>
+    <meta property="product:price:currency" content="<?php echo $this->getPriceCurrency(); ?>"/>
+<?php endif; ?>
