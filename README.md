@@ -3,5 +3,7 @@
 ## Rich Snippets (ld+json)
 - Product
 - Organization
+- Breadcrumbs
 
-
+## OpenGraph
+- Product

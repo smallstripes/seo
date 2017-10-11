@@ -1,0 +1,26 @@
+<?php if ($this->haveBreadcrumbs()) : ?>
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [<?php
+        $i = 1;
+        foreach ($this->getBreadcrumbs() as $crumb) {
+            echo '{' . PHP_EOL .
+                '      "@type": "ListItem",' . PHP_EOL .
+                '       "position":' . $i . ',' . PHP_EOL .
+                '       "item": {' . PHP_EOL .
+                '           "@id": "' . $crumb['link'] . '",' . PHP_EOL .
+                '           "name": "' . $crumb['label'] . '"' . PHP_EOL .
+                '       }' . PHP_EOL .
+                '    }';
+            if ($i != $this->crumbsCount()) {
+                echo ',';
+            }
+            $i++;
+        }
+        ?>]
+}
+</script>
+<?php endif; ?>
+
